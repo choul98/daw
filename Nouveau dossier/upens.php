@@ -12,16 +12,17 @@ catch(Exception $e)
 }
 
 if (isset($_POST['submit'])) {
-    $numDoc = $_SESSION["numDoc"];
-    $class = $_POST['class'];
+    $numEns = $_SESSION["numEns"];
+    $grade = $_POST['grede'];
     $spec = $_POST['spec'];
     $lab = $_POST['lab'];
     $dep = $_POST['dep'];
-	$sql = "UPDATE doctorant SET class='$class',spec='$spec',lab='$lab',dep='$dep' WHERE numDoc=$numDoc";
+    $nbrDoc = $_POST['nbrDoc'];
+	$sql = "UPDATE enseignant SET grade='$grade',spec='$spec',lab='$lab',dep='$dep',nbrDoc='$nbrDoc' WHERE numEns=$numEns";
 
     $reponse = $bdd->prepare($sql);
 
     $reponse->execute();
-     header('location: crud.php');
+     header('location: crud2.php');
 }          
 ?>

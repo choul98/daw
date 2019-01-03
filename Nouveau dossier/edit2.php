@@ -12,38 +12,43 @@ catch(Exception $e)
 }
 $id = $_GET['id'];
 
-$sql = "SELECT * FROM doctorant WHERE numDoc = :id";
+$sql = "SELECT * FROM enseignant WHERE numEns = :id";
     $reponse = $bdd->prepare($sql);
     $reponse->bindValue(':id', $id);!
     $reponse->execute();
 
 if (isset($_GET['id'])) {
   $donnees = $reponse->fetch();
-    $_SESSION["numDoc"] = $donnees['numDoc'];
+    $_SESSION["numEns"] = $donnees['numEns'];
 
      ?>
-<form method="post" action="updct.php" >
+<form method="post" action="upens.php" >
 
-<p>classment de doctorant</p>
+<p>grade de enseignant</p>
 <input 
   type="text"  
-       name="class"
-  value="<?php echo $donnees['class'] ?>" >
-<p>specialité de doctorant</p>
+       name="grade"
+  value="<?php echo $donnees['grade'] ?>" >
+<p>specialité de enseignant</p>
 <input 
   type="text"  
        name="spec"
   value="<?php echo $donnees['spec'] ?>" >
-<p>Laboratoire de doctorant</p>
+<p>Laboratoire de enseignant</p>
 <input 
   type="text" 
        name="lab"
   value="<?php echo $donnees['lab'] ?>" >
-<p>departement de doctorant</p>
+<p>departement de enseignant</p>
 <input 
   type="text"  
        name="dep"
   value="<?php echo $donnees['dep'] ?>" >
+    <p>le nombre des doctorants</p>
+<input 
+  type="text"  
+       name="dep"
+  value="<?php echo $donnees['nbrDoc'] ?>" >
 
  <input type="submit" name="submit" value="Submit">
 </form>

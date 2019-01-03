@@ -23,24 +23,25 @@ $pass=$_POST['pass'];
 //            }
 //         
 //    }else
-if($_POST['radio'] == "admin" ){
-            $sql = "SELECT * FROM ADMIN WHERE emai = :email";
-            $reponse = $bdd->prepare($sql);
-            $reponse->bindValue(':email', $email);
-            $reponse->execute();
-            $donnees = $reponse->fetch();
-            $number_of_rows = $reponse->fetchColumn();
-            if($number_of_rows == 0) { 
-                echo $number_of_rows;
-            } else{
-                if($_POST['pass']==$donnees['passAdmin']){
-                    header("Location: admin.html");
-                }else{
-                    echo'mot de pass not cerrect';
-                }
-            }
-          
-    }
+//if($_POST['radio'] == "admin" ){
+//            $sql = "SELECT * FROM ADMIN WHERE emai = :email";
+//            $reponse = $bdd->prepare($sql);
+//            $reponse->bindValue(':email', $email);
+//            $reponse->execute();
+//            $donnees = $reponse->fetch();
+//            $number_of_rows = $reponse->fetchColumn();
+//            if($number_of_rows == 0) { 
+//                echo $number_of_rows;
+//            } else{
+//                if($_POST['pass']==$donnees['passAdmin']){
+//                    header("Location: admin.html");
+//                }else{
+//                    echo'mot de pass not cerrect';
+//                }
+//            }
+//          
+//    }
+      header("Location: admin.html");
          
 //    }elseif($_POST['radio'] == "doctorant" ){
 //            $query = "SELECT * FROM DOCTORANT WHERE emailDoc = '$email'";
