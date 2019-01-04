@@ -1,3 +1,8 @@
+<?php
+include "includes/connection.php";
+$_SESSION['sujet']="admin";
+?>
+
 <ul class="nav navbar-nav navbar-dark bg-dark side-nav float-left" style="padding: 15px;">
 <br>
   <li class="nav-item">
@@ -14,6 +19,10 @@
   <br>
   <li class="nav-item">
     <a class="nav-link" href="n-dctr.php">Nouvel Doctorant</a>
+  </li>
+  <br>
+    <li class="nav-item">
+    <a class="nav-link" href="sujets.php">conculte les sujets</a>
   </li>
   <br>
   <li class="nav-item">

@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 include "includes/connection.php";
 
 if(isset($_POST['email']) && isset($_POST['pass'])) {
@@ -24,12 +24,13 @@ if(isset($_POST['email']) && isset($_POST['pass'])) {
                 $role = $donnees['ROLE'];
                 if($role == 'A') {
                     # admin
+                    $_SESSION['sujet']="admin";
                     header("Location: dashboard.php");
                 } elseif ($role == 'S') {
                     # subscriber
                     # profile page for subscriber here
                 } elseif ($role == 'E') {
-                    # profile page for enseignant here
+                   header("Location: ens.php");
                 } else {
                     # profile page for doctorant here
                 }
