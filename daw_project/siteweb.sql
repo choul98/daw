@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 03, 2019 at 10:57 PM
+-- Generation Time: Jan 04, 2019 at 03:32 PM
 -- Server version: 10.1.32-MariaDB
 -- PHP Version: 7.2.5
 
@@ -48,7 +48,7 @@ INSERT INTO `doctorant` (`ID`, `CLASS`) VALUES
 
 CREATE TABLE `enseignant` (
   `ID` varchar(255) NOT NULL,
-  `GRADE` int(11) DEFAULT NULL,
+  `GRADE` enum('MAB','MAA','MCB','MCA','PROFESSEUR') DEFAULT NULL,
   `NBR_DOC` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -71,6 +71,21 @@ CREATE TABLE `member` (
 
 INSERT INTO `member` (`ID`, `SPEC`, `LAB`, `DEP`) VALUES
 ('doc_2033345155c2e7b5681fed', 'RSD', 'MISC', 'IFA');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `sujet`
+--
+
+CREATE TABLE `sujet` (
+  `ID` int(11) NOT NULL,
+  `DESCRIPTION` text,
+  `MOTCLE` varchar(255) DEFAULT NULL,
+  `ID_E` varchar(255) DEFAULT NULL,
+  `ID_D` varchar(255) DEFAULT NULL,
+  `STATUS` enum('ACCEPTED','PENDING') DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -118,10 +133,26 @@ ALTER TABLE `member`
   ADD PRIMARY KEY (`ID`);
 
 --
+-- Indexes for table `sujet`
+--
+ALTER TABLE `sujet`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`ID`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `sujet`
+--
+ALTER TABLE `sujet`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
