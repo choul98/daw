@@ -15,7 +15,8 @@
 
     function insert_doctorant($nom, $prenom, $email, $pass, $role, $spec, $lab, $dep, $class) {
         global $bdd;
-        if(doctorant_exists($email)) {
+        if(! doctorant_exists($email)) {
+            # no one registered with that email
             $id = uniqid('doc_'.rand());
             $bdd->exec("INSERT INTO USER ( ID, NOM, PRENOM, EMAIL, PASSWORD, ROLE ) VALUES ('$id', '$nom', '$prenom', '$email', '$pass', '$role')");
             $bdd->exec("INSERT INTO MEMBER ( ID, SPEC, LAB, DEP ) VALUES ('$id', '$spec', '$lab', '$dep' )");
