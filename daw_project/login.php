@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 include "includes/connection.php";
 
 if(isset($_POST['email']) && isset($_POST['pass'])) {
@@ -20,6 +20,7 @@ if(isset($_POST['email']) && isset($_POST['pass'])) {
             header("Location: index.php");
         } else {
             if($pass == $donnees['PASSWORD']) {
+                $_SESSION['ID'] = $donnees['ID'];
                 $role = $donnees['ROLE'];
                 if($role == 'A') {
                     # admin

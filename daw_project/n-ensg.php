@@ -1,7 +1,9 @@
 <?php
     include "includes/header.php";
+    include "includes/sidebar.php";
 ?>
         <div class="container">
+            <br>
             <div class="col-lg-10">
                 <form action="add_ens.php" method="post">
                     <div class="form-group">

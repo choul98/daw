@@ -3,7 +3,7 @@ session_start();
 include "includes/connection.php";
 
 $id = $_GET['id'];
-$sql = "SELECT * FROM USER, MEMBER, ENSEIGNANT WHERE USER.ID = MEMBER.ID AND MEMBER.ID = ENSEIGNANT.ID AND ID = :id";
+$sql = "SELECT * FROM USER, MEMBER, ENSEIGNANT WHERE USER.ID = MEMBER.ID AND MEMBER.ID = ENSEIGNANT.ID AND USER.ID = :id";
 
     $reponse = $bdd->prepare($sql);
     $reponse->bindValue(':id', $id);!

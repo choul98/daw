@@ -1,9 +1,12 @@
 <?php
 include "includes/header.php";
+include "includes/sidebar.php";
 
 $reponse = $bdd->query('SELECT * FROM ENSEIGNANT, MEMBER, USER WHERE USER.ID = MEMBER.ID AND ENSEIGNANT.ID = MEMBER.ID');
 ?>
 <div class="container">
+  <br>
+  <h3>Enseignants </h3>
   <table class="table table-dark">
     <thead>
       <tr>

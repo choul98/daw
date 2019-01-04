@@ -1,5 +1,6 @@
 <?php
 include "includes/header.php";
+include "includes/sidebar.php";
 
 $c=1;
 $reponse = $bdd->query('SELECT * FROM DOCTORANT, MEMBER, USER WHERE USER.ID = MEMBER.ID AND DOCTORANT.ID = MEMBER.ID');
