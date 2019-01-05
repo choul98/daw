@@ -8,16 +8,16 @@ $reponse = $bdd->query('SELECT * FROM DOCTORANT, MEMBER, USER WHERE USER.ID = ME
 <div class="container">
   <br>
   <h3>Doctorants</h3>
-  <table class="table table-dark">
+  <table class="table table-dark table-bordered table-hover">
     <thead>
       <tr>
         <th>#</th>
         <th>Nom</th>
         <th>Prenom</th>
-        <th>Classment</th>
-        <th>specialite</th>
+        <th>Classement</th>
+        <th>Spécialité</th>
         <th>Laboratoire</th>
-        <th>departement</th>
+        <th>Departement</th>
           <th>Email</th>
           <th>Modifier</th>
           <th>Supprime</th>
@@ -37,8 +37,8 @@ $reponse = $bdd->query('SELECT * FROM DOCTORANT, MEMBER, USER WHERE USER.ID = ME
           <td><?php echo $donnees['LAB']; ?></td>
           <td><?php echo $donnees['DEP']; ?> </td>
           <td><?php echo $donnees['EMAIL']; ?> </td>
-          <td><a href="edit_doc.php?id=<?php echo $donnees['ID']; ?>">Edit</a></td>
-          <td><a href="sup_doc.php?id=<?php echo $donnees['ID']; ?>">supprime</a></td>
+          <td><a class="btn btn-info" href="edit_doc.php?id=<?php echo $donnees['ID']; ?>">Modifier</a></td>
+          <td><a class="btn btn-danger" href="sup_doc.php?id=<?php echo $donnees['ID']; ?>">Supprimer</a></td>
         </tr>
         
         <?php

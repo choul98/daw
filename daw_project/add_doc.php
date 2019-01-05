@@ -1,4 +1,5 @@
 <?php
+    ob_start();
     include "includes/header.php";
     include "includes/functions.php";
     
@@ -16,6 +17,6 @@
     if(isset_doctorant($nom, $prenom, $email, $pass, $role, $spec, $lab, $dep, $class)) {
         insert_doctorant($nom, $prenom, $email, $pass, $role, $spec, $lab, $dep, $class);
         
-        // header("Location: doctorants.php");
+        header("Location: doctorants.php");
     }
 ?>

@@ -1,7 +1,6 @@
 <?php
   include "includes/header.php";
-include "includes/connection.php";
-session_start();
+    include "includes/connection.php";
 $id = $_SESSION["ID"];
 $sql = "SELECT * FROM USER, MEMBER, ENSEIGNANT WHERE USER.ID = MEMBER.ID AND MEMBER.ID = ENSEIGNANT.ID AND ID = :id";
 

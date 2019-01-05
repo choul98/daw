@@ -1,5 +1,4 @@
 <?php
-session_start();
 include "includes/connection.php";
 
 $id = $_SESSION["ID"];

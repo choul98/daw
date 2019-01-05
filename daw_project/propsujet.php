@@ -1,8 +1,12 @@
 <?php
 include "includes/header.php";
-include "includes/connection.php";
- include "includes/functions.php";
+include "includes/sidebar.php";
+include "includes/functions.php";
 
+// style this and you're good to go
+// too lazy to style
+// really sorry.
+// good luck
 
 ?>
 <form method="post" >
@@ -21,7 +25,8 @@ if(isset($_POST['submit'])){
     $motcle = $_POST['motcle'];
     $des = $_POST['des'];
     $id_e = $_SESSION["ID"];
-    $bdd->exec("insert into sujet (	DESCRIPTION,MOTCLE,ID_E,titre) values ('$des','$motcle','$id_e','$titre')");
+    insert_sujet($des, $motcle, $id_e, null, null, $titre);
+    header("Location: sujets.php");
 }
 
 ?>

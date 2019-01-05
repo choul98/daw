@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.0
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : 127.0.0.1
--- Généré le :  sam. 05 jan. 2019 à 11:22
--- Version du serveur :  10.1.31-MariaDB
--- Version de PHP :  7.2.4
+-- Host: 127.0.0.1
+-- Generation Time: Jan 05, 2019 at 03:39 PM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 7.2.5
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données :  `siteweb`
+-- Database: `siteweb`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `doctorant`
+-- Table structure for table `doctorant`
 --
 
 CREATE TABLE `doctorant` (
@@ -34,16 +34,16 @@ CREATE TABLE `doctorant` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `doctorant`
+-- Dumping data for table `doctorant`
 --
 
 INSERT INTO `doctorant` (`ID`, `CLASS`) VALUES
-('doc_2033345155c2e7b5681fed', 3);
+('doc_13655527595c3096def07bf', 5);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `enseignant`
+-- Table structure for table `enseignant`
 --
 
 CREATE TABLE `enseignant` (
@@ -53,7 +53,7 @@ CREATE TABLE `enseignant` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `enseignant`
+-- Dumping data for table `enseignant`
 --
 
 INSERT INTO `enseignant` (`ID`, `GRADE`, `NBR_DOC`) VALUES
@@ -62,7 +62,7 @@ INSERT INTO `enseignant` (`ID`, `GRADE`, `NBR_DOC`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `member`
+-- Table structure for table `member`
 --
 
 CREATE TABLE `member` (
@@ -73,17 +73,20 @@ CREATE TABLE `member` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `member`
+-- Dumping data for table `member`
 --
 
 INSERT INTO `member` (`ID`, `SPEC`, `LAB`, `DEP`) VALUES
-('doc_2033345155c2e7b5681fed', 'RSD', 'MISC', 'IFA'),
-('ens', 'STIC', 'MISC', 'IFA');
+('doc_12847145215c30953e40f6f', 'STIC', 'MISC', 'IFA'),
+('doc_13655527595c3096def07bf', 'RSD', 'MISC', 'IFA'),
+('doc_2033345155c2e7b5681fed', 'STIC', 'MISC', 'IFA'),
+('doc_9268716755c3095dba6ad3', 'RSD', 'MISC', 'IFA'),
+('ens', 'RSD', 'MISC', 'IFA');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `sujet`
+-- Table structure for table `sujet`
 --
 
 CREATE TABLE `sujet` (
@@ -97,18 +100,17 @@ CREATE TABLE `sujet` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `sujet`
+-- Dumping data for table `sujet`
 --
 
 INSERT INTO `sujet` (`ID`, `DESCRIPTION`, `MOTCLE`, `ID_E`, `ID_D`, `STATUS`, `titre`) VALUES
 (8, 'sujet 1', 'motcle', 'ens', NULL, 'ACCEPTED', ''),
-(10, 'des de tittre 1', 'teste de titre 1', '', NULL, 'PENDING', 'titre 1'),
-(11, 'des de tittre 1', 'teste de titre 1', 'ens', NULL, 'PENDING', 'titre 1');
+(11, 'des de tittre 1', 'teste de titre 1', 'ens', NULL, 'ACCEPTED', 'titre 1');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
@@ -121,76 +123,79 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Déchargement des données de la table `user`
+-- Dumping data for table `user`
 --
 
 INSERT INTO `user` (`ID`, `NOM`, `PRENOM`, `EMAIL`, `PASSWORD`, `ROLE`) VALUES
 ('admin', 'admin', 'admin', 'admin@admin.admin', 'admin', 'A'),
-('doc_2033345155c2e7b5681fed', 'fake name', 'fake lastname', 'fakemail@domain.com', 'fake', 'D'),
+('doc_12847145215c30953e40f6f', '', '', '', '', 'D'),
+('doc_13655527595c3096def07bf', 'doc', 'doc', 'doc@doc.doc', 'doc', 'D'),
+('doc_2033345155c2e7b5681fed', '', '', '', '', 'D'),
+('doc_9268716755c3095dba6ad3', '', '', '', 'doc', 'D'),
 ('ens', 'chouaib', 'cheriet', 'chou98@gmail.com', 'chou98', 'E');
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `doctorant`
+-- Indexes for table `doctorant`
 --
 ALTER TABLE `doctorant`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Index pour la table `enseignant`
+-- Indexes for table `enseignant`
 --
 ALTER TABLE `enseignant`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Index pour la table `member`
+-- Indexes for table `member`
 --
 ALTER TABLE `member`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Index pour la table `sujet`
+-- Indexes for table `sujet`
 --
 ALTER TABLE `sujet`
   ADD PRIMARY KEY (`ID`);
 
 --
--- Index pour la table `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`ID`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `sujet`
+-- AUTO_INCREMENT for table `sujet`
 --
 ALTER TABLE `sujet`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Contraintes pour les tables déchargées
+-- Constraints for dumped tables
 --
 
 --
--- Contraintes pour la table `doctorant`
+-- Constraints for table `doctorant`
 --
 ALTER TABLE `doctorant`
   ADD CONSTRAINT `doctorant_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `member` (`ID`);
 
 --
--- Contraintes pour la table `enseignant`
+-- Constraints for table `enseignant`
 --
 ALTER TABLE `enseignant`
   ADD CONSTRAINT `enseignant_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `member` (`ID`);
 
 --
--- Contraintes pour la table `member`
+-- Constraints for table `member`
 --
 ALTER TABLE `member`
   ADD CONSTRAINT `member_ibfk_1` FOREIGN KEY (`ID`) REFERENCES `user` (`ID`);

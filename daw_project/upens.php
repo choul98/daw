@@ -1,17 +1,21 @@
 <?php
-session_start();
 include "includes/connection.php";
+include "includes/functions.php";
 
 if (isset($_POST['submit'])) {
-    $numEns = $_SESSION["numEns"];
-    $grade = $_POST['grede'];
-    $spec = $_POST['spec'];
-    $lab = $_POST['lab'];
-    $dep = $_POST['dep'];
-    $nbrDoc = $_POST['nbrDoc'];
-	$sql = "UPDATE enseignant SET grade='$grade',spec='$spec',lab='$lab',dep='$dep',nbrDoc='$nbrDoc' WHERE numEns=$numEns";
-    $reponse = $bdd->prepare($sql);
-    $reponse->execute();
-     header('location: crud2.php');
+    $id = $_POST['ID'];
+    $nom = $_POST['NOM'];
+    $prenom = $_POST['PRENOM'];
+    $email = $_POST['EMAIL'];
+    $pass = $_POST['PASS'];
+    $role = $_POST['ROLE'];
+    $spec = $_POST['SPEC'];
+    $lab = $_POST['LAB'];
+    $dep = $_POST['DEP'];
+    $grade = $_POST['GRADE'];
+    $nbr_doc = $_POST['NBR_DOC'];
+    
+    update_enseignant($id, $id, $nom, $prenom, $email, $pass, $role, $spec, $lab, $dep, $grade, $nbr_doc);
+    header("Location: enseignants.php");
 }          
 ?>

@@ -1,9 +1,15 @@
 <?php
-    include "connection.php";
 
     function update_user($id, $new_id, $nom, $prenom, $email, $pass, $role) {
         global $bdd;
-        $bdd->exec("UPDATE USER SET ID = '$new_id', NOM = '$nom', PRENOM = '$prenom', EMAIL = '$email', PASSWORD = '$pass', ROLE = '$role', CLASS = '$class' WHERE ID = '$id'");
+        $bdd->exec("UPDATE USER SET ID = '$new_id', NOM = '$nom', PRENOM = '$prenom', EMAIL = '$email', PASSWORD = '$pass', ROLE = '$role' WHERE ID = '$id'");
+    }
+
+    function get_user_name($id) {
+        global $bdd;
+        $reponse = $bdd->query("SELECT NOM, PRENOM FROM USER WHERE ID = '$id'");
+        $data = $reponse->fetch();
+        return $data['NOM'].' '.$data['PRENOM'];
     }
 
     function update_member($id, $spec, $lab, $dep) {
@@ -26,7 +32,7 @@
     function doctorant_exists($email) {
         global $bdd;
         $reponse = $bdd->query("SELECT * FROM USER WHERE EMAIL = '$email'");
-        $number_of_rows = sizeof($reponse);
+        $number_of_rows = sizeof($reponse->fetchAll());
         return $number_of_rows >= 1;
     }
 
@@ -78,6 +84,30 @@
         $bdd->exec("DELETE FROM MEMBER WHERE ID = '$id'");
         $bdd->exec("DELETE FROM ENSEIGNANT WHERE ID = '$id'");
     }
+
+
+    # sujet
+
+    function insert_sujet($description, $motcle, $id_e, $id_d, $status, $titre) {
+        global $bdd;
+        $bdd->exec("INSERT INTO SUJET VALUES ( '$description', '$motcle', '$id_e', '$id_d', '$status', '$titre' )");
+    }
+
+    function delete_sujet($id) {
+        global $bdd;
+        $bdd->exec("DELETE FROM SUJET WHERE ID = '$id'");
+    }
+
+    function update_sujet($id, $description, $motcle, $id_e, $id_d, $status, $titre) {
+        global $bdd;
+        $bdd->exec("UPDATE SUJET SET DESCRIPTION = '$description', MOTCLE = '$motcle', ID_E = '$id_e', ID_D = '$id_d', STATUS = '$status', TITRE = '$titre' WHERE ID = '$id'");
+    }
+
+    function update_sujet_status($id, $status) {
+        global $bdd;
+        $bdd->exec("UPDATE SUJET SET STATUS = '$status' WHERE ID = '$id'");
+    }
+
 
     # CREATE TABLE USER (ID VARCHAR(255) PRIMARY KEY, NOM VARCHAR(255), PRENOM VARCHAR(255), EMAIL VARCHAR(255), PASSWORD VARCHAR(255), ROLE ENUM('A', 'S', 'E', 'D'))
     # CREATE TABLE MEMBER(ID VARCHAR(255) PRIMARY KEY, SPEC ENUM('STIC', 'RSD', 'GLAA', 'SIA'), LAB ENUM('MISC', 'LIRE'), DEP ENUM('IFA', 'TLSI'), FOREIGN KEY ID REFERENCES USER(ID))

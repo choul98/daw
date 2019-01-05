@@ -1,28 +1,19 @@
 <?php
-try
-{
-   
-    $bdd = new PDO('mysql:host=localhost;dbname=siteweb;charset=utf8', 'root', '');
-}
-catch(Exception $e)
-{
-        die('Erreur : '.$e->getMessage());
+    include "includes/connection.php";
+    include "includes/functions.php";
 
-}
-
-if (isset($_POST['submit'])) {
-	// $nomDoc = $_POST['nomDoc'];
-    // $numDoc = $_POST['numDoc'];
-	// $sql = "UPDATE doctorant SET nomDoc='$nomDoc' WHERE numDoc=$numDoc";
-    $numDoc = $_SESSION["numDoc"];
-    $class = $_POST['class'];
-    $spec = $_POST['spec'];
-    $lab = $_POST['lab'];
-    $dep = $_POST['dep'];
-	$sql = "UPDATE doctorant SET class='$class',spec='$spec',lab='$lab',dep='$dep' WHERE numDoc=$numDoc";
-    $reponse = $bdd->prepare($sql);
-
-    $reponse->execute();
-    header('location: crud.php');
-}          
+    if (isset($_POST['submit'])) {
+        $id = $_POST['ID'];
+        $nom = $_POST['NOM'];
+        $prenom = $_POST['PRENOM'];
+        $email = $_POST['EMAIL'];
+        $pass = $_POST['PASS'];
+        $role = $_POST['ROLE'];
+        $class = $_POST['CLASS'];
+        $spec = $_POST['SPEC'];
+        $lab = $_POST['LAB'];
+        $dep = $_POST['DEP'];
+        update_doctorant($id, $id, $nom, $prenom, $email, $pass, $role, $spec, $lab, $dep, $class);
+        header("Location: doctorants.php");
+    }          
 ?>
